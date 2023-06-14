@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.AiDerma.MySplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#5F9DF7</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
         <item name="postSplashScreenTheme">@style/Theme.AiDerma</item>
     </style>
 </resources>
