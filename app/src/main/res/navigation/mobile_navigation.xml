@@ -31,5 +31,8 @@
         tools:layout="@layout/fragment_profile"/>
 
     <fragment
-        android:id="@+id/bottom_camera"/>
+        android:id="@+id/bottom_camera"
+        />
+
+
 </navigation>

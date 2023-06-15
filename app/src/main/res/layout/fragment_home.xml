@@ -14,7 +14,82 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="190dp"
-        android:background="@drawable/app_background"/>
+        android:background="@drawable/app_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/header"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_info"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_baseline_info_24"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_toTutorial"
+                app:layout_constraintEnd_toStartOf="@+id/tv_toTutorial"
+                app:layout_constraintStart_toStartOf="@+id/tv_header"
+                app:layout_constraintTop_toTopOf="@+id/tv_toTutorial" />
+
+            <TextView
+                android:id="@+id/tv_toTutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/to_tutorial"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/iv_info"
+                app:layout_constraintTop_toBottomOf="@+id/tv_header"
+                tools:layout_constraintStart_toEndOf="@id/iv_info" />
+
+            <TextView
+                android:id="@+id/tv_header2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Kenali jenis kondisi kulit"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_header"
+                app:layout_constraintTop_toBottomOf="@+id/tv_toTutorial"
+                />
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/rv_disease"
+                app:layout_constraintEnd_toEndOf="@+id/rv_disease"
+                app:layout_constraintStart_toStartOf="@+id/rv_disease"
+                app:layout_constraintTop_toTopOf="@+id/rv_disease"
+                android:id="@+id/progressbar"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_disease"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_header2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_header2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 

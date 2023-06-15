@@ -1,5 +1,6 @@
 package com.example.aiderma.api.config
 
+import com.example.aiderma.api.response.DiseaseResponse
 import com.example.aiderma.api.response.LoginResponse
 import com.example.aiderma.api.response.RegisterResponse
 import retrofit2.http.FormUrlEncoded
@@ -23,4 +24,7 @@ interface ApiService  {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call <LoginResponse>
+
+    @GET("allskinDisease")
+    fun getDisease(): Call<DiseaseResponse>
 }

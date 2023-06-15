@@ -22,6 +22,4 @@ class CameraFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_camera, container, false)
     }
-
-
 }
