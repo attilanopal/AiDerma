@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.aiderma.databinding.ActivityMainBinding
+import com.example.aiderma.helper.SessionPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.bottom_home,R.id.bottom_faq,R.id.bottom_camera,R.id.bottom_about,R.id.bottom_profile
             )
         )
+
+        val pref = SessionPref(this)
+
+
+        binding.fab.setOnClickListener {
+            pref.clearSession()
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent)
+        }
 
 //        setupActionBarWithNavController(navController,appBarConfiguration)
         navView.setupWithNavController(navController)
