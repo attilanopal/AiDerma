@@ -31,8 +31,5 @@
         tools:layout="@layout/fragment_profile"/>
 
     <fragment
-        android:id="@+id/bottom_camera"
-        android:name="com.example.aiderma.ui.camera.CameraFragment"
-        android:label="@string/title_camera"
-        tools:layout="@layout/fragment_camera"/>
+        android:id="@+id/bottom_camera"/>
 </navigation>
