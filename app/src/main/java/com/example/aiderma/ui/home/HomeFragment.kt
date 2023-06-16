@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aiderma.R
 import com.example.aiderma.api.response.DiseasesItem
@@ -15,10 +16,10 @@ class HomeFragment : Fragment() {
 
 
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var adapter: DiseaseAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private var isSearching = false
 
 
     override fun onCreateView(
@@ -41,16 +42,47 @@ class HomeFragment : Fragment() {
 
         viewModel.getListDisease()
 
+        adapter = DiseaseAdapter(emptyList())
+        adapter.setOnItemClickCallback(object : DiseaseAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: DiseasesItem) {
+                // Logika yang sesuai saat item di RecyclerView diklik
+            }
+        })
+        binding.rvDisease.adapter = adapter
+
         viewModel.listDisease.observe(viewLifecycleOwner) { listDisease ->
-            val adapter = DiseaseAdapter(listDisease)
-
-            adapter.setOnItemClickCallback(object : DiseaseAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: DiseasesItem) {
-
-                }
-            })
-            binding.rvDisease.adapter = adapter
+            val data = if (isSearching) viewModel.searchedListDisease.value else listDisease
+            adapter.updateData(data ?: emptyList())
         }
+
+        viewModel.searchedListDisease.observe(viewLifecycleOwner) { searchedListDisease ->
+            if (isSearching) {
+                adapter.updateData(searchedListDisease ?: emptyList())
+            }
+        }
+
+
+        // searchview
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                if (query.isNotEmpty()) {
+                    viewModel.search(query)
+                    isSearching = true
+                } else {
+                    isSearching = false
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (isSearching && newText.isEmpty()) {
+                    isSearching = false
+                    adapter.updateData(viewModel.listDisease.value ?: emptyList())
+                }
+                return true
+            }
+        })
+
     }
 
 

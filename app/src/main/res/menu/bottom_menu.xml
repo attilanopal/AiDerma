@@ -12,12 +12,13 @@
         android:title="@string/title_faq"/>
 
     <item
-        android:title="  "/>
+        android:id="@+id/bottom_camera"
+        android:title=" "/>
 
     <item
-        android:id="@+id/bottom_about"
+        android:id="@+id/bottom_history"
         android:icon="@drawable/report"
-        android:title="@string/title_about"/>
+        android:title="@string/title_history"/>
 
     <item
         android:id="@+id/bottom_profile"

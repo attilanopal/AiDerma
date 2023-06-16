@@ -15,7 +15,7 @@ import java.nio.ByteBuffer
 import com.example.aiderma.R
 import com.example.aiderma.api.response.DiseasesItem
 
-class DiseaseAdapter(private val listDisease: List<DiseasesItem>) : RecyclerView.Adapter<DiseaseAdapter.ViewHolder>() {
+class DiseaseAdapter(private var listDisease: List<DiseasesItem>) : RecyclerView.Adapter<DiseaseAdapter.ViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -61,4 +61,10 @@ class DiseaseAdapter(private val listDisease: List<DiseasesItem>) : RecyclerView
     override fun getItemCount(): Int {
         return listDisease.size
     }
+
+    fun updateData(newData: List<DiseasesItem>) {
+        listDisease = newData
+        notifyDataSetChanged()
+    }
+
 }

@@ -28,8 +28,10 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.fab.setOnClickListener {
-            navController?.navigate(R.id.cameraFragment)
+            val navController = findNavController(R.id.nav_host_fragment)
+            navController.navigate(R.id.bottom_camera)
         }
+
 
         navView.setupWithNavController(navController)
     }

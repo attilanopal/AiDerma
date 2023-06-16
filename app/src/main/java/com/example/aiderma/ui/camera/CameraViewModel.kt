@@ -19,14 +19,15 @@ class CameraViewModel : ViewModel() {
     private val _uploadImg = MutableLiveData<UploadResponse>()
     val uploadImg : LiveData<UploadResponse> = _uploadImg
 
-    fun sendImage(file : MultipartBody.Part){
-        val client = ApiConfig.getApiService().uploadImg(file)
+    fun sendImage(token: String, file : MultipartBody.Part){
+        val client = ApiConfig.getApiService().uploadImg(token, file)
         client.enqueue(object : Callback<UploadResponse> {
             override fun onResponse(
                 call: Call<UploadResponse>,
                 response: Response<UploadResponse>
             ) {
                 if(response.isSuccessful){
+                    _uploadImg.value = response.body()
                     Log.d(TAG, "${response.message()}")
                 }else {
                     Log.e(TAG,"onResponse else: ${response.message()}")
