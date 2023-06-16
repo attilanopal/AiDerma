@@ -20,18 +20,14 @@ class HomeViewModel : ViewModel() {
     private val _listDisease = MutableLiveData<List<DiseasesItem>>()
     val listDisease: LiveData<List<DiseasesItem>> = _listDisease
 
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getListDisease(){
-        _isLoading.value = true
         val client = ApiConfig.getApiService().getDisease()
         client.enqueue(object: Callback<DiseaseResponse>{
             override fun onResponse(
                 call: Call<DiseaseResponse>,
                 response: Response<DiseaseResponse>
             ) {
-                _isLoading.value = false
                 if(response.isSuccessful){
                     _listDisease.value = response.body()?.diseases
                 }else {
@@ -40,7 +36,6 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<DiseaseResponse>, t: Throwable) {
-                _isLoading.value = false
                 Log.e(TAG, "onResponse ${t.message}")
             }
         })

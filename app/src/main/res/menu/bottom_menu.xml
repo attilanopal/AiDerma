@@ -12,7 +12,6 @@
         android:title="@string/title_faq"/>
 
     <item
-        android:id="@+id/bottom_camera"
         android:title="  "/>
 
     <item

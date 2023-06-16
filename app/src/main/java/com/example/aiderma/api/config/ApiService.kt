@@ -3,6 +3,8 @@ package com.example.aiderma.api.config
 import com.example.aiderma.api.response.DiseaseResponse
 import com.example.aiderma.api.response.LoginResponse
 import com.example.aiderma.api.response.RegisterResponse
+import com.example.aiderma.api.response.UploadResponse
+import okhttp3.MultipartBody
 import retrofit2.http.FormUrlEncoded
 import retrofit2.Call
 import retrofit2.http.*
@@ -27,4 +29,10 @@ interface ApiService  {
 
     @GET("allskinDisease")
     fun getDisease(): Call<DiseaseResponse>
+
+    @Multipart
+    @POST("uploadImage")
+    fun uploadImg(
+        @Part img: MultipartBody.Part
+    ): Call<UploadResponse>
 }
